@@ -6,8 +6,7 @@ using System.Collections.Generic;
 
 
 [ApiController]
-[Route("controller")]
-
+[Route("[controller]")]
 public class ImageController : ControllerBase
 {
 

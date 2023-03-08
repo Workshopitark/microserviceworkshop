@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+ upload:
+  image: hnrkjnsn/upload-service-image:latest
+  environment:
+    - ImagePath=/srv/images
+  ports:
+    - "5001:80"
+  networks:
+    - default
+  volumes:
+    - images:/srv/images
+ list:
+  image: hnrkjnsn/list-service-image:latest
+  environment:
+    - ImagePath=/srv/images
+  ports:
+    - "5002:80"
+  networks:
+    - default
+  volumes:
+    - images:/srv/images
+volumes:
+ images:
+  external: false
+networks:
+ default:
+  driver: bridge
+  name: mitnet
