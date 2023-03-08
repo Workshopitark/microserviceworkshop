@@ -27,6 +27,7 @@ public class ImageController : ControllerBase
     [HttpPost("upload"), DisableRequestSizeLimit]
     public IActionResult UploadImage()
     {
+        _logger.LogInformation("funktion ramt");
         List<Uri> images = new List<Uri>();
         try
         {
@@ -63,6 +64,7 @@ public class ImageController : ControllerBase
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex.Message);
             return StatusCode(500, $"Internal server error.");
         }
         return Ok(images);
